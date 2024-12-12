@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") %>
+<div class="container col-lg-8 py-md-5">
+   
+<div class="container ps-0 ">
+    
+        <div class="row container m-0 ps-0 py-4">
+            <div class="col-lg-2 ms-0 ps-0">
+                <img src="/images/<%= book.title %><%= book.src %>" alt="<%= book.title %>">
+            </div>
+            <div class="col-lg-10">
+                <h1>
+                    <%= book.title %> - by <%= book.author %>
+                </h1>
+                <p>
+                    <%= book.description %>
+                </p>
+            </div>
+
+            <h3 class="pt-4">Notite</h3>
+            <p>
+            <%= book.notes %>
+            </p>
+        <div class="col mt-4">
+            <a href="/edit/<%= book.id %>">
+            <button type="button" class="btn btn-warning" name="id" value="<%= book.id %>">Edit</button>
+
+        </a>
+
+        <a href="/delete/<%= book.id %>">
+            <button type="button" class="btn btn-secondary" name="id" value="<%= book.id %>">Delete</button>
+
+        </a>
+        </div>
+        
+        </div>
+
+        
+       
+
+</div> 
+</div>
+<%- include ("partials/footer.ejs") %>

@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+    <div class="container col-lg-8 py-md-5 p-4">
+        <h1 class="my-4">
+            <%= book.title %>
+        </h1>
+
+        <form action="/update/<%= book.id %>" method="post">
+            <div class="row mb-3">
+                <label for="author" class="col-sm-2 col-form-label">Author</label>
+                <div class="col-sm-10">
+                    <input type="text" name="author" class="form-control" id="author"
+                        value="<%= book.author %>" />
+                </div>
+
+            </div>
+            <div class="row mb-3">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea type="text" name="description" class="form-control" id="description"><%= book.description %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="notes" class="col-sm-2 col-form-label">Notes</label>
+                <div class="col-sm-10">
+                    <textarea type="text" name="notes" class="form-control" id="notes"><%= book.notes %></textarea>
+                </div>
+            </div>
+            
+            <img src="/images/<%= book.title %><%= book.src %>" alt="<%= book.title %>">
+
+            <input type="submit" class="form-control btn btn-warning my-4" value="Save" />
+        </form>
+    </div>
+    <%- include("partials/footer.ejs") %>

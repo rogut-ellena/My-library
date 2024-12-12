@@ -1,0 +1,84 @@
+<%- include("partials/header.ejs") %>
+    <div class="container col-lg-8 py-md-5">
+        <% if(locals.books) {%>
+            <div class="d-grid gap-2">
+                <form action="/add" method="get">
+                    <button class="btn btn-warning form-control" type="submit">Add a new book</button>
+                </form>
+
+
+            </div>
+            <div class="container ps-0 ">
+                <% books.forEach(book=> { %>
+                    <div class="row container m-0 ps-0 py-4">
+                        <div class="col-lg-3 col-md-3 ms-0 p-3">
+                            <img src="/images/<%= book.title %><%= book.src %>" alt="<%= book.title %>">
+                        </div>
+                        <div class="col-lg-9 col-md-9 p-3">
+                            <h1>
+                                <%= book.title %> - by <%= book.author %>
+                            </h1>
+                            <p>
+                                <%= book.description %>
+                            </p>
+                            
+                        </div>
+                        
+                    <h4><a class="info-link col-md-6 offset-md-3 p-3" href="/book/<%= book.id %>">View all</a></h4>
+                    
+                    </div>
+
+                    
+                    <%}); %>
+
+            </div>
+            <%} else {%>
+                <div>
+                    <h1 class="my-4">Add your new book</h1>
+
+                    <form action="/upload" enctype="multipart/form-data" method="post">
+                        <div class="row mb-3">
+                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" />
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <label for="author" class="col-sm-2 col-form-label">Author</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="author" class="form-control" id="author" />
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+
+                                <textarea type="text" name="description" class="form-control"
+                                    id="description"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <label for="notes" class="col-sm-2 col-form-label">Notes</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" name="notes" class="form-control" id="notes"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <label for="image" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" class="form-control" id="image" />
+                            </div>
+
+                        </div>
+                        <input type="submit" class="form-control btn btn-warning my-4" value="Save" />
+                    </form>
+                </div>
+                <% } %>
+
+    </div>
+
+    <%- include ("partials/footer.ejs") %>
